@@ -1,0 +1,8 @@
+fastText language identification model (lid.176.ftz)
+Author: Facebook AI Research (Meta), https://fasttext.cc/docs/en/language-identification.html
+Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License (CC BY-SA 3.0):
+https://creativecommons.org/licenses/by-sa/3.0/legalcode
+
+The model is downloaded unmodified from Meta's server at
+https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz
+and is not distributed with this app.

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug builds only: test hooks that must never ship. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application>
+    <!-- adb shell am broadcast -n com.eillance.screentranslate/.debug.DebugTranslateReceiver \
+           -\-es from ja -\-es to en -\-es text "こんにちは" ; then: adb logcat -s DebugTranslate -->
+    <receiver
+      android:name=".debug.DebugTranslateReceiver"
+      android:exported="true" />
+  </application>
+</manifest>

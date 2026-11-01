@@ -1,0 +1,316 @@
+{
+    "sections": [
+        {
+            "id": "NATIVE",
+            "title": "Translation engine (native code)"
+        },
+        {
+            "id": "APP",
+            "title": "App libraries"
+        },
+        {
+            "id": "MODELS",
+            "title": "Downloadable models (not bundled; fetched on demand from their publishers)"
+        }
+    ],
+    "mplSourceNotice": "This app contains MPL-2.0 code. The Bergamot translator: upstream source at https://github.com/mozilla/translations/tree/8eada038fd45bbf6fa58a412b22f80c79887fabc/inference, with our modifications given in full in the \"Source changes\" entry below. Eigen (unmodified), bundled in ONNX Runtime 1.31.1: https://gitlab.com/libeigen/eigen.",
+    "components": [
+        {
+            "name": "Bergamot translator (Mozilla)",
+            "version": "8eada038fd45",
+            "license": "MPL-2.0",
+            "url": "https://github.com/mozilla/translations/tree/8eada038fd45bbf6fa58a412b22f80c79887fabc/inference",
+            "file": "mpl-2.0.txt",
+            "section": "NATIVE",
+            "note": "Modified: translation_model.h/.cpp (thread-safe replica loading). Source: upstream at https://github.com/mozilla/translations/tree/8eada038fd45bbf6fa58a412b22f80c79887fabc/inference plus the patch listed below."
+        },
+        {
+            "name": "Source changes to Bergamot, Marian and SentencePiece (patch)",
+            "version": "8eada038fd45",
+            "license": "MPL-2.0 / MIT / Apache-2.0",
+            "url": "https://github.com/mozilla/translations/tree/8eada038fd45bbf6fa58a412b22f80c79887fabc/inference",
+            "file": "translations.patch.txt",
+            "section": "NATIVE",
+            "note": "Complete source of our modifications, applied on top of the upstream revision."
+        },
+        {
+            "name": "Marian NMT (Mozilla fork)",
+            "version": "8eada038fd45",
+            "license": "MIT",
+            "url": "https://github.com/mozilla/translations/tree/8eada038fd45bbf6fa58a412b22f80c79887fabc/inference/marian-fork",
+            "file": "marian.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "intgemm",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/kpu/intgemm",
+            "file": "intgemm.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "ruy",
+            "version": "bundled",
+            "license": "Apache-2.0",
+            "url": "https://github.com/google/ruy",
+            "file": "apache-2.0.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "cpuinfo",
+            "version": "bundled",
+            "license": "BSD-2-Clause",
+            "url": "https://github.com/pytorch/cpuinfo",
+            "file": "cpuinfo.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "simd_utils",
+            "version": "bundled",
+            "license": "BSD-2-Clause",
+            "url": "https://github.com/JishinMaster/simd_utils",
+            "file": "simd_utils.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "SentencePiece",
+            "version": "bundled",
+            "license": "Apache-2.0",
+            "url": "https://github.com/browsermt/sentencepiece",
+            "file": "apache-2.0.txt",
+            "section": "NATIVE",
+            "note": "Modified: src/trainer_interface.cc (constexpr \u2192 const for NDK 29); see src/cmake/patches/translations.patch."
+        },
+        {
+            "name": "Abseil (subset bundled in SentencePiece)",
+            "version": "bundled",
+            "license": "Apache-2.0",
+            "url": "https://github.com/abseil/abseil-cpp",
+            "file": "apache-2.0.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "Protocol Buffers lite (bundled in SentencePiece)",
+            "version": "bundled",
+            "license": "BSD-3-Clause",
+            "url": "https://github.com/protocolbuffers/protobuf",
+            "file": "protobuf.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "darts-clone",
+            "version": "bundled",
+            "license": "BSD-2-Clause",
+            "url": "https://github.com/s-yata/darts-clone",
+            "file": "darts-clone.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "esaxx",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/hillbig/esaxx",
+            "file": "esaxx.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "ssplit-cpp",
+            "version": "bundled",
+            "license": "Apache-2.0",
+            "url": "https://github.com/browsermt/ssplit-cpp",
+            "file": "ssplit-cpp.txt",
+            "section": "NATIVE",
+            "note": "Only the Apache-2.0 C++ code is used; the LGPL nonbreaking_prefixes files are not included."
+        },
+        {
+            "name": "PCRE2",
+            "version": "10.39",
+            "license": "BSD-3-Clause",
+            "url": "https://github.com/PCRE2Project/pcre2",
+            "file": "pcre2.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "faiss (subset bundled in Marian)",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/facebookresearch/faiss",
+            "file": "faiss.txt",
+            "section": "NATIVE",
+            "note": "Modified: VectorTransform.h (include <x86intrin.h> on Android); see src/cmake/patches/translations.patch."
+        },
+        {
+            "name": "yaml-cpp",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/jbeder/yaml-cpp",
+            "file": "yaml-cpp.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "spdlog",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/gabime/spdlog",
+            "file": "spdlog.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "CLI11",
+            "version": "1.6",
+            "license": "BSD-3-Clause",
+            "url": "https://github.com/CLIUtils/CLI11",
+            "file": "cli11.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "pathie-cpp",
+            "version": "bundled",
+            "license": "BSD-2-Clause",
+            "url": "https://github.com/Quintus/pathie-cpp",
+            "file": "pathie-cpp.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "cnpy",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/rogersce/cnpy",
+            "file": "cnpy.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "mio",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/mandreyel/mio",
+            "file": "mio.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "phf",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/wahern/phf",
+            "file": "phf.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "zstr",
+            "version": "bundled",
+            "license": "MIT",
+            "url": "https://github.com/mateidavid/zstr",
+            "file": "zstr.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "zlib",
+            "version": "bundled",
+            "license": "Zlib",
+            "url": "https://zlib.net",
+            "file": "zlib.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "fastText",
+            "version": "0.9.2",
+            "license": "MIT",
+            "url": "https://github.com/facebookresearch/fastText",
+            "file": "fasttext.txt",
+            "section": "NATIVE",
+            "note": ""
+        },
+        {
+            "name": "ONNX Runtime",
+            "version": "1.31.1",
+            "license": "MIT",
+            "url": "https://github.com/microsoft/onnxruntime",
+            "file": "onnxruntime.txt",
+            "section": "APP",
+            "note": ""
+        },
+        {
+            "name": "ONNX Runtime third-party notices",
+            "version": "1.31.1",
+            "license": "Various",
+            "url": "https://github.com/microsoft/onnxruntime/blob/v1.31.1/ThirdPartyNotices.txt",
+            "file": "onnxruntime-notices.txt",
+            "section": "APP",
+            "note": "Components compiled into libonnxruntime.so (protobuf, abseil, XNNPACK, Eigen, \u2026)."
+        },
+        {
+            "name": "Eigen (bundled in ONNX Runtime)",
+            "version": "bundled",
+            "license": "MPL-2.0",
+            "url": "https://gitlab.com/libeigen/eigen",
+            "file": "mpl-2.0.txt",
+            "section": "APP",
+            "note": "Unmodified. Source code: https://gitlab.com/libeigen/eigen"
+        },
+        {
+            "name": "AndroidX, Jetpack Compose, Material 3",
+            "version": "",
+            "license": "Apache-2.0",
+            "url": "https://developer.android.com/jetpack/androidx",
+            "file": "apache-2.0.txt",
+            "section": "APP",
+            "note": ""
+        },
+        {
+            "name": "Kotlin standard library, kotlinx.coroutines",
+            "version": "",
+            "license": "Apache-2.0",
+            "url": "https://kotlinlang.org",
+            "file": "apache-2.0.txt",
+            "section": "APP",
+            "note": ""
+        },
+        {
+            "name": "Translation models (Mozilla, Firefox Translations project)",
+            "version": "",
+            "license": "MPL-2.0",
+            "url": "https://github.com/mozilla/translations",
+            "file": "mpl-2.0.txt",
+            "section": "MODELS",
+            "note": "Downloaded from Mozilla's model registry."
+        },
+        {
+            "name": "PaddleOCR PP-OCRv6 / PP-OCRv5 models (PaddlePaddle)",
+            "version": "",
+            "license": "Apache-2.0",
+            "url": "https://huggingface.co/PaddlePaddle",
+            "file": "apache-2.0.txt",
+            "section": "MODELS",
+            "note": "Downloaded from PaddlePaddle's Hugging Face repositories."
+        },
+        {
+            "name": "fastText language identification (lid.176)",
+            "version": "",
+            "license": "CC-BY-SA-3.0",
+            "url": "https://fasttext.cc/docs/en/language-identification.html",
+            "file": "cc-by-sa-3.0.txt",
+            "section": "MODELS",
+            "note": "Downloaded unmodified from Meta."
+        }
+    ]
+}
