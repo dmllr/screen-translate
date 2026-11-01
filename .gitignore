@@ -1,2 +1,7 @@
 # Third-party sources cloned by src/cmake/import_remote.cmake
 /_imported/
+
+# Release signing (see README: Release signing). Never commit keys.
+/keystore.config
+*.jks
+*.keystore

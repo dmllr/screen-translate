@@ -128,6 +128,47 @@ adb shell "am broadcast -n com.eillance.screentranslate/.debug.DebugTranslateRec
 adb logcat -s DebugTranslate Marian
 ```
 
+### Versioning
+
+The version lives in [`VERSION`](VERSION) at the repo root (`MAJOR`, `MINOR`, `REVISION`, `BUILD`).
+The app's `versionName` is `MAJOR.MINOR.REVISION.BUILD` and its `versionCode` is `BUILD`.
+
+Every local build (assemble, install, test, check, lint, …), whether you run it by hand or from
+a script, adds 1 to `BUILD` and writes it back to `VERSION`. Commit that change with your work.
+CI builds never change `VERSION`. To build locally without a bump, add
+`-Pscreentranslate.noVersionBump=true`.
+
+### Release signing
+
+Release builds use the debug key unless a release key is set up. To use your own key, create
+`keystore.config` at the repo root (git ignores it):
+
+```properties
+storeFile=path/to/release.jks   # absolute, or relative to the repo root
+storePassword=...
+keyAlias=...
+keyPassword=...
+```
+
+If `keystore.config` or the keystore file is missing, the build prints a warning and signs with
+the debug key. It doesn't fail.
+
+### Continuous integration
+
+- **PR tests** (`.github/workflows/pr-tests.yml`) runs the unit tests on every pull request into
+  `main`/`master`. To block merging when they fail, add the **Unit tests** check as a required
+  status check in the branch protection rule for `master`.
+- **Release** (`.github/workflows/release.yml`) runs on tags `vMAJOR.MINOR.REVISION` or
+  `vMAJOR.MINOR.REVISION.BUILD`. The tag must match `VERSION`; `BUILD` is only compared when the
+  tag includes it. The workflow builds the release APK and AAB, uploads them as workflow
+  artifacts and publishes a GitHub release with the APK, AAB, R8 mapping and `SHA256SUMS`.
+  For a real release key, add the repository secrets `KEYSTORE_BASE64` (`base64 -w0 release.jks`),
+  `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`. Without them the APK uses the debug key.
+
+```bash
+git tag v0.1.0 && git push origin v0.1.0
+```
+
 ### How it works
 
 ```

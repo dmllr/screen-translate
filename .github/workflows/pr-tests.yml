@@ -1,0 +1,45 @@
+name: PR tests
+
+# Runs on every pull request into main/master. Make "Unit tests" a required status check in the
+# branch protection rule so a failing run blocks the merge (see README: Continuous integration).
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+concurrency:
+  group: pr-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: src/screen-translate-android
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25   # gradle/gradle-daemon-jvm.properties
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Kotlin side only: the unit tests don't need the native engine (a 10-20 min NDK build).
+      - name: Run unit tests
+        run: ./gradlew --stacktrace -Pscreentranslate.skipNative=true :app:testDebugUnitTest
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: src/screen-translate-android/app/build/reports/tests/
