@@ -9,8 +9,9 @@ apps, menus: anything you can see, including text inside images.
 Everything runs on your phone. There are no accounts, no cloud APIs and no Google services.
 After a one-time model download, it works in airplane mode.
 
-> **Status:** early, but usable. There are no prebuilt releases yet; see
-> [Building from source](#building-from-source).
+> **Download:** get the APK from the
+> [latest release](https://github.com/dmllr/screen-translate/releases/latest).
+> The app is early, but usable.
 
 ## Features
 
@@ -49,7 +50,9 @@ recognizer for them yet.
 
 ## Getting started
 
-1. **Install** the app. For now, build it yourself; see [Building from source](#building-from-source).
+1. **Install** the APK from the
+   [latest release](https://github.com/dmllr/screen-translate/releases/latest), or
+   [build it yourself](#building-from-source).
 2. **Pick your languages.** On the Home screen, choose *Translate into* and your usual source
    language.
 3. **Download the models.** Tap **Download** under *Models needed*. This fetches the text reader,
@@ -153,22 +156,6 @@ keyPassword=...
 If `keystore.config` or the keystore file is missing, the build prints a warning and signs with
 the debug key. It doesn't fail.
 
-### Continuous integration
-
-- **PR tests** (`.github/workflows/pr-tests.yml`) runs the unit tests on every pull request into
-  `main`/`master`. To block merging when they fail, add the **Unit tests** check as a required
-  status check in the branch protection rule for `master`.
-- **Release** (`.github/workflows/release.yml`) runs on tags `vMAJOR.MINOR.REVISION` or
-  `vMAJOR.MINOR.REVISION.BUILD`. The tag must match `VERSION`; `BUILD` is only compared when the
-  tag includes it. The workflow builds the release APK and AAB, uploads them as workflow
-  artifacts and publishes a GitHub release with the APK, AAB, R8 mapping and `SHA256SUMS`.
-  For a real release key, add the repository secrets `KEYSTORE_BASE64` (`base64 -w0 release.jks`),
-  `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`. Without them the APK uses the debug key.
-
-```bash
-git tag v0.1.0 && git push origin v0.1.0
-```
-
 ### How it works
 
 ```
@@ -200,14 +187,6 @@ screen-translate/
 - Translations of vertical text are drawn horizontally inside the original column area.
 - On Android 12+, translations in continuous mode are slightly see-through: Android requires
   that for overlays that let touches pass to the app underneath.
-
-## Roadmap
-
-- Tap a translated block to see the original or copy it
-- Better layout for manga speech bubbles and vertical text
-- Smoother continuous mode (track moving text instead of re-reading the screen)
-- Wi-Fi-only model downloads
-- Prebuilt releases, including an F-Droid build
 
 ## Acknowledgements
 
